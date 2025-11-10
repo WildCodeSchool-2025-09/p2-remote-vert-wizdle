@@ -1,4 +1,4 @@
 function Home() {
-	return <>Je suis Home</>;
+	return <></>;
 }
 export default Home;

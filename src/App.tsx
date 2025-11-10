@@ -1,12 +1,12 @@
 import { Link, Outlet } from "react-router";
+import "./styles/reset.css";
+import "./styles/variable.css";
 import "./styles/App.css";
 
 function App() {
 	return (
 		<>
-			<header>
-				<p>Je suis header</p>
-			</header>
+			<header />
 			<nav>
 				<Link to="/">Home</Link>
 				<Link to="/rules">Rules</Link>
@@ -15,9 +15,7 @@ function App() {
 			<main>
 				<Outlet />
 			</main>
-			<footer>
-				<p>Je suis footer</p>
-			</footer>
+			<footer />
 		</>
 	);
 }

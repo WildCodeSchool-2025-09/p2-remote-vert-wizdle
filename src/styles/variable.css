@@ -1,3 +1,5 @@
+@import "./fonts.css";
+
 :root {
 	--background-false: rgba(127, 9, 9, 1);
 	--background-true: rgba(26, 71, 42, 1);
@@ -26,8 +28,8 @@
 	--font-color-card: rgba(94, 81, 36, 1);
 	--font-color-first: rgba(0, 0, 0, 0.77);
 
-	--font-text: "Jaini", system-ui;
-	--font-title: "Alegreya", serif;
+	--font-title: "Jaini", system-ui;
+	--font-text: "Alegreya", serif;
 
 	--font-size-XL: 4rem;
 	--font-size-L: 2rem;

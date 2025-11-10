@@ -1,4 +1,4 @@
 function Game() {
-	return <>Je suis Game</>;
+	return <></>;
 }
 export default Game;

@@ -1,5 +1,4 @@
 function Rules() {
-	return <>Je suis Rules</>;
+	return <></>;
 }
-
 export default Rules;
