@@ -1,11 +1,23 @@
-import "./App.css";
+import { Link, Outlet } from "react-router";
+import "./styles/App.css";
 
 function App() {
-	const name = "toto";
-	const text = "Welcome";
 	return (
 		<>
-			{text} {name}
+			<header>
+				<p>Je suis header</p>
+			</header>
+			<nav>
+				<Link to="/">Home</Link>
+				<Link to="/rules">Rules</Link>
+				<Link to="/game">Game</Link>
+			</nav>
+			<main>
+				<Outlet />
+			</main>
+			<footer>
+				<p>Je suis footer</p>
+			</footer>
 		</>
 	);
 }
