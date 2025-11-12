@@ -1,0 +1,51 @@
+.box-false {  
+	background: var(--background-false)
+}
+
+.box-true {
+	background: var(--background-true)
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  background-image: url("../assets/images/image-de-fond.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; 
+  overflow: auto;
+}
+
+#table-game {
+  color: antiquewhite;
+  border-collapse: separate;
+  border-spacing: 1rem;
+  table-layout: fixed;
+  width: 1000px;
+  height: 150px;
+  overflow-x: auto;
+  margin: 2rem auto; 
+  background-color: var(--background-all-80); 
+  border-radius: 12px; 
+}
+
+#table-game thead tr th {
+	font-size: var(--font-size-XL);
+	font-family: var(--font-title);
+	font-weight: 100; 
+	text-decoration: underline; 
+}
+
+#table-game tbody tr td {
+	font-size: var(--font-size-L);
+	font-family: var(--font-text);
+	border: 3px solid transparent;
+	border-image: var(--border-color-first) 1;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle; 
+}
+

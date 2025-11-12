@@ -31,8 +31,9 @@
 	--font-title: "Jaini", system-ui;
 	--font-text: "Alegreya", serif;
 
-	--font-size-XL: 4rem;
-	--font-size-L: 2rem;
+	--font-size-XXL: 4rem;
+	--font-size-XL: 2rem;
+	--font-size-L: 1.5rem;
 	--font-size-M: 1rem;
 	--font-size-S: 0.75rem;
 }
