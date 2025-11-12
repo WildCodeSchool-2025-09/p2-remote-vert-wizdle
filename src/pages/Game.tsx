@@ -5,6 +5,6 @@ function Game() {
 		<>
 			<VisualisationTable />
 		</>
-	)
+	);
 }
 export default Game;
