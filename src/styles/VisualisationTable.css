@@ -26,7 +26,6 @@ body {
 	border-spacing: 1rem;
 	table-layout: fixed;
 	width: 1000px;
-	height: 150px;
 	overflow-x: auto;
 	margin: 2rem auto;
 	background-color: var(--background-all-80);
@@ -48,4 +47,18 @@ body {
 	text-align: center;
 	display: table-cell;
 	vertical-align: middle;
+}
+
+.cell {
+	height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.table-container {
+	max-height: 600px;
+	overflow-y: auto;
+	margin: 2rem auto;
+	border-radius: 12px;
 }
