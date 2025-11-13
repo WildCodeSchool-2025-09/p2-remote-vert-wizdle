@@ -87,7 +87,7 @@ function VisualisationTable() {
 												: "box-false"
 										}
 									>
-										{personnage?.genre}
+										{personnage?.genre === "" ? "Inconnu" : personnage.genre}
 									</td>
 									<td
 										className={
@@ -96,7 +96,9 @@ function VisualisationTable() {
 												: "box-false"
 										}
 									>
-										{personnage?.ascendance}
+										{personnage?.ascendance === ""
+											? "Inconnu"
+											: personnage.ascendance}
 									</td>
 									<td
 										className={
@@ -105,7 +107,7 @@ function VisualisationTable() {
 												: "box-false"
 										}
 									>
-										{personnage?.maison}
+										{personnage?.maison === "" ? "Inconnu" : personnage.maison}
 									</td>
 									<td
 										className={
@@ -124,7 +126,9 @@ function VisualisationTable() {
 												: "box-false"
 										}
 									>
-										{personnage?.couleur_cheveux}
+										{personnage?.couleur_cheveux === ""
+											? "Inconnu"
+											: personnage.couleur_cheveux}
 									</td>
 								</tr>
 							))}
