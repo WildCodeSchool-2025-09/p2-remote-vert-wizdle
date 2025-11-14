@@ -48,13 +48,18 @@ function VisualisationTable({
 						{tableauTry.length > 0 &&
 							tableauTry.map((character: Character) => (
 								<tr key={character.id}>
-									<td
-										className={
-											todayCharacter?.nom === character?.nom
-												? "box-true"
-												: "box-false"
-										}
-									>
+									<td>
+										{todayCharacter?.nom === character?.nom ? (
+											<img
+												src="./src/assets/images/rond-vert.png"
+												alt="rond valide"
+											/>
+										) : (
+											<img
+												src="./src/assets/images/rond-rouge.png"
+												alt="rond invalide"
+											/>
+										)}
 										<div className="cell">{character?.nom}</div>
 									</td>
 									<td
