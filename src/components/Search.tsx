@@ -1,40 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import type { Character, SearchProps } from "../interfaces/interfaces";
 
-interface Character {
-	id: number;
-	nom: string;
-	maison: string;
-	image: string;
-	espece: string;
-	genre: string;
-	ascendance: string;
-	couleur_cheveux: string;
-	vivant: boolean;
-}
-
-function Search() {
+function Search({
+	setSelected,
+	setTableauTry,
+	error,
+	data,
+	selected,
+	setError,
+}: SearchProps) {
 	const [query, setQuery] = useState("");
-	const [data, setData] = useState<Character[]>([]);
 	const [filtered, setFiltered] = useState<Character[]>([]);
-	const [error, setError] = useState<string | null>(null);
 	const [searchError, setSearchError] = useState(false);
-	const [selected, setSelected] = useState<Character | null>(null);
-
-	useEffect(() => {
-		fetch("https://test-api-5zsf.onrender.com/harry_potter")
-			.then((response) => response.json())
-			.then((characters) => {
-				setData(characters);
-			})
-			.catch(() => setError("Les personnages ont disparu 😲"));
-	}, []);
-
 	const normalize = (text: string) =>
 		text
 			.normalize("NFD")
 			.replace(/\p{Diacritic}/gu, "")
 			.toLowerCase();
-
 	const changeSearchBar = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const value = e.target.value;
 		setQuery(value);
@@ -47,6 +29,7 @@ function Search() {
 		} else {
 			const results = data
 				.filter((item) => normalize(item.nom).startsWith(normalize(value)))
+				.filter((item) => item.id !== selected?.id)
 				.sort((a, b) => a.nom.localeCompare(b.nom));
 
 			setFiltered(results);
@@ -61,6 +44,7 @@ function Search() {
 		setSelected(character);
 		setQuery("");
 		setFiltered([]);
+		setTableauTry((prev) => [character, ...prev]);
 	};
 
 	return (
@@ -97,18 +81,6 @@ function Search() {
 					</li>
 				) : null}
 			</ul>
-
-			{selected && (
-				<div className="character-details">
-					<p>{selected.nom}</p>
-					<p>Espece :{selected.espece || "Inconnue"}</p>
-					<p>Genre : {selected.genre || "Inconnue"}</p>
-					<p>Ascendance : {selected.ascendance || "Inconnue"}</p>
-					<p>Maison : {selected.maison || "Inconnue"}</p>
-					<p>En vie ? : {selected.vivant || "Inconnue"}</p>
-					<p>Cheveux : {selected.couleur_cheveux || "Inconnue"}</p>
-				</div>
-			)}
 		</div>
 	);
 }

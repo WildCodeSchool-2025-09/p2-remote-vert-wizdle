@@ -1,50 +1,36 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "../styles/VisualisationTable.css";
 import calendarData from "../data/calendar.json";
+import type {
+	Character,
+	VisualisationTableProps,
+} from "../interfaces/interfaces";
 
-interface Personnage {
-	id: string;
-	nom: string;
-	espece: string;
-	genre: string;
-	ascendance: string;
-	maison: string;
-	vivant: boolean;
-	couleur_cheveux: string;
-}
-
-function VisualisationTable() {
-	const apiUrl = import.meta.env.VITE_API_URL;
-	const [allData, setAllData] = useState<Personnage[]>([]);
-	const [tableauTry, setTableauTry] = useState<Personnage[]>([]);
+function VisualisationTable({
+	selected,
+	tableauTry,
+	setVictory,
+	data,
+}: VisualisationTableProps) {
 	const today = new Date().toISOString().split("T")[0];
 	const calendar: Record<string, string> = calendarData;
 	const todayId = calendar[today];
-	const todayPerso = allData.find((personnage) => personnage.id === todayId);
+	const todayCharacter = data.find((character) => character.id === todayId);
 
+	// biome-ignore lint: react-hooks/exhaustive-deps
 	useEffect(() => {
-		fetch(apiUrl)
-			.then((res) => res.json())
-			.then((data) => {
-				setAllData(data);
-			});
-	}, []);
+		if (!selected || !data) return;
+		if (selected.id === todayCharacter?.id) {
+			setVictory(true);
+		}
+	}, [selected, data]);
 
-	if (allData.length === 0) {
+	if (data.length === 0) {
 		return <p>Chargement des données...</p>;
-	}
-
-	function pushRandom() {
-		if (allData.length === 0) return;
-		const random = allData[Math.floor(Math.random() * allData.length)];
-		setTableauTry((prev) => [random, ...prev]);
 	}
 
 	return (
 		<>
-			<button type="button" onClick={pushRandom}>
-				Ajoute un perso aléatoire
-			</button>
 			<div className="table-container">
 				<table id="table-game">
 					<thead>
@@ -60,75 +46,75 @@ function VisualisationTable() {
 					</thead>
 					<tbody>
 						{tableauTry.length > 0 &&
-							tableauTry.map((personnage) => (
-								<tr key={personnage.id}>
+							tableauTry.map((character: Character) => (
+								<tr key={character.id}>
 									<td
 										className={
-											todayPerso?.nom === personnage?.nom
+											todayCharacter?.nom === character?.nom
 												? "box-true"
 												: "box-false"
 										}
 									>
-										<div className="cell">{personnage?.nom}</div>
+										<div className="cell">{character?.nom}</div>
 									</td>
 									<td
 										className={
-											todayPerso?.espece === personnage?.espece
+											todayCharacter?.espece === character?.espece
 												? "box-true"
 												: "box-false"
 										}
 									>
-										{personnage?.espece}
+										{character?.espece}
 									</td>
 									<td
 										className={
-											todayPerso?.genre === personnage?.genre
+											todayCharacter?.genre === character?.genre
 												? "box-true"
 												: "box-false"
 										}
 									>
-										{personnage?.genre === "" ? "Inconnu" : personnage.genre}
+										{character?.genre === "" ? "Inconnu" : character.genre}
 									</td>
 									<td
 										className={
-											todayPerso?.ascendance === personnage?.ascendance
+											todayCharacter?.ascendance === character?.ascendance
 												? "box-true"
 												: "box-false"
 										}
 									>
-										{personnage?.ascendance === ""
+										{character?.ascendance === ""
 											? "Inconnu"
-											: personnage.ascendance}
+											: character.ascendance}
 									</td>
 									<td
 										className={
-											todayPerso?.maison === personnage?.maison
+											todayCharacter?.maison === character?.maison
 												? "box-true"
 												: "box-false"
 										}
 									>
-										{personnage?.maison === "" ? "Inconnu" : personnage.maison}
+										{character?.maison === "" ? "Inconnu" : character.maison}
 									</td>
 									<td
 										className={
-											todayPerso?.vivant === personnage?.vivant
+											todayCharacter?.vivant === character?.vivant
 												? "box-true"
 												: "box-false"
 										}
 									>
-										{personnage?.vivant ? "oui" : "non"}
+										{character?.vivant ? "oui" : "non"}
 									</td>
 									<td
 										className={
-											todayPerso?.couleur_cheveux ===
-											personnage?.couleur_cheveux
+											todayCharacter?.couleur_cheveux ===
+											character?.couleur_cheveux
 												? "box-true"
 												: "box-false"
 										}
 									>
-										{personnage?.couleur_cheveux === ""
+										{character?.couleur_cheveux === ""
 											? "Inconnu"
-											: personnage.couleur_cheveux}
+											: character.couleur_cheveux}
 									</td>
 								</tr>
 							))}
