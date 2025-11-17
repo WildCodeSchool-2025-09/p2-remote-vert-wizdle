@@ -6,19 +6,17 @@ import Header from "./components/Header";
 
 function App() {
 	return (
-		<>
-			<div className="background">
-				<nav>
-					<Link to="/">Home</Link>
-					<Link to="/rules">Rules</Link>
-					<Link to="/game">Game</Link>
-					<Header />
-				</nav>
-				<main>
-					<Outlet />
-				</main>
-			</div>
-		</>
+		<div className="background">
+			<nav>
+				<Link to="/">Home</Link>
+				<Link to="/rules">Rules</Link>
+				<Link to="/game">Game</Link>
+				<Header />
+			</nav>
+			<main>
+				<Outlet />
+			</main>
+		</div>
 	);
 }
 
