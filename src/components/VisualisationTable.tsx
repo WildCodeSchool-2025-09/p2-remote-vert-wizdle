@@ -35,13 +35,13 @@ function VisualisationTable({
 				<table id="table-game">
 					<thead>
 						<tr>
-							<th>Nom</th>
-							<th>Espèce</th>
-							<th>Genre</th>
-							<th>Ascendance</th>
-							<th>Maison</th>
-							<th>En vie?</th>
-							<th>Cheveux</th>
+							<th className="cell-name">Nom</th>
+							<th className="cell">Espèce</th>
+							<th className="cell">Genre</th>
+							<th className="cell">Ascendance</th>
+							<th className="cell">Maison</th>
+							<th className="cell">En vie?</th>
+							<th className="cell">Cheveux</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -49,18 +49,20 @@ function VisualisationTable({
 							tableauTry.map((character: Character) => (
 								<tr key={character.id}>
 									<td>
-										{todayCharacter?.nom === character?.nom ? (
-											<img
-												src="./src/assets/images/rond-vert.png"
-												alt="rond valide"
-											/>
-										) : (
-											<img
-												src="./src/assets/images/rond-rouge.png"
-												alt="rond invalide"
-											/>
-										)}
-										<div className="cell">{character?.nom}</div>
+										<div className="cell-principal">
+											{character?.nom}
+											{todayCharacter?.nom === character?.nom ? (
+												<img
+													src="./src/assets/images/coche-vert.png"
+													alt="validation"
+												/>
+											) : (
+												<img
+													src="./src/assets/images/coche-rouge.png"
+													alt="refus"
+												/>
+											)}
+										</div>
 									</td>
 									<td
 										className={
