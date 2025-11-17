@@ -1,4 +1,6 @@
+import Timer from "../components/Timer";
+
 function Game() {
-	return <></>;
+	return <Timer />;
 }
 export default Game;
