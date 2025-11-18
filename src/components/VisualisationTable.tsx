@@ -1,10 +1,14 @@
 import { useEffect } from "react";
 import "../styles/VisualisationTable.css";
 import calendarData from "../data/calendar.json";
-import type {
-	Character,
-	VisualisationTableProps,
-} from "../interfaces/interfaces";
+import type { Character } from "../interfaces/interfaces";
+
+interface VisualisationTableProps {
+	selectedCharacter: Character | null;
+	tableauTry: Character[];
+	setVictory: React.Dispatch<React.SetStateAction<boolean>>;
+	dataApi: Character[];
+}
 
 function VisualisationTable({
 	selectedCharacter,

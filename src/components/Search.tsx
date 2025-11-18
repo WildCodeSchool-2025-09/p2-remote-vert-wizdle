@@ -1,5 +1,14 @@
 import { useState } from "react";
-import type { Character, SearchProps } from "../interfaces/interfaces";
+import type { Character } from "../interfaces/interfaces";
+
+interface SearchProps {
+	setSelectedCharacter: React.Dispatch<React.SetStateAction<Character | null>>;
+	setTableauTry: React.Dispatch<React.SetStateAction<Character[]>>;
+	errorApi: string | null;
+	dataApi: Character[];
+	setErrorApi: React.Dispatch<React.SetStateAction<string | null>>;
+	tableauTry: Character[];
+}
 
 function Search({
 	setSelectedCharacter,
