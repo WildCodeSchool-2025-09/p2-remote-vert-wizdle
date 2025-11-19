@@ -9,8 +9,7 @@ function App() {
 		<div className="background">
 			<nav>
 				<Link to="/">Home</Link>
-				<Link to="/rules">Rules</Link>
-				<Link to="/game">Game</Link>
+
 				<Header />
 			</nav>
 			<main>
