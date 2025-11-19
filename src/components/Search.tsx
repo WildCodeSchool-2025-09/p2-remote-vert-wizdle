@@ -2,13 +2,11 @@ import { useEffect, useState } from "react";
 import type { Character } from "../interfaces/interfaces";
 
 interface SearchProps {
-	time: number;
 	setTime: React.Dispatch<React.SetStateAction<number>>;
-	intervalId: NodeJS.Timeout | null;
-	setIntervalId: React.Dispatch<React.SetStateAction<NodeJS.Timeout | null>>;
 }
 
-function Search({ time, setTime, intervalId, setIntervalId }: SearchProps) {
+function Search({ setTime }: SearchProps) {
+	const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 	const [guess, setGuess] = useState("");
 	const [dataApi, setDataApi] = useState<Character[]>([]);
 	const [listCharacter, setListCharacter] = useState<Character[]>([]);

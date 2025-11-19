@@ -6,25 +6,18 @@ import { useState } from "react";
 
 function Game() {
 	const [time, setTime] = useState(0);
-	const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
 
 	return (
 		<>
-			<section className="timer-indice">
+			<section className="timer-clue">
 				<article>
 					<Timer time={time} />
 				</article>
 				<article>
-					<p>Indices</p>
+					<p>Clues</p>
 				</article>
 			</section>
-
-			<Search
-				time={time}
-				setTime={setTime}
-				intervalId={intervalId}
-				setIntervalId={setIntervalId}
-			/>
+			<Search setTime={setTime} />
 		</>
 	);
 }
