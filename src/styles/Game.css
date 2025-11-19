@@ -1,0 +1,10 @@
+.timer-indice {
+	display: flex;
+	justify-content: space-around;
+	margin: 60px 0px;
+}
+
+.timer-indice article {
+	width: 35%;
+	max-width: 250px;
+}
