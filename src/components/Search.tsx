@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import type { Character } from "../interfaces/interfaces";
 
-function Search() {
+interface SearchProps {
+	onAttempt: () => void;
+}
+
+function Search({ onAttempt }: SearchProps) {
 	const [guess, setGuess] = useState("");
 	const [dataApi, setDataApi] = useState<Character[]>([]);
 	const [listCharacter, setListCharacter] = useState<Character[]>([]);
@@ -52,6 +56,7 @@ function Search() {
 		setSelectedCharacter(character);
 		setGuess("");
 		setListCharacter([]);
+		onAttempt();
 	};
 
 	return (
