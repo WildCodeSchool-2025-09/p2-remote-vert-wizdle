@@ -1,16 +1,9 @@
-.clue-button {
-	padding: 8px 16px;
-	font-size: 16px;
-	background-color: #4caf50;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: opacity 0.3s;
+.boule-disabled {
+	opacity: 0.3;
+	filter: grayscale(100%);
 }
 
-.clue-button-disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
-	background-color: #aaa;
+.boule-active {
+	opacity: 1;
+	filter: none;
 }

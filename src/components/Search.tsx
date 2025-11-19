@@ -3,9 +3,10 @@ import type { Character } from "../interfaces/interfaces";
 
 interface SearchProps {
 	onAttempt: () => void;
+	setClueCharacter: (character: Character | null) => void;
 }
 
-function Search({ onAttempt }: SearchProps) {
+function Search({ onAttempt, setClueCharacter }: SearchProps) {
 	const [guess, setGuess] = useState("");
 	const [dataApi, setDataApi] = useState<Character[]>([]);
 	const [listCharacter, setListCharacter] = useState<Character[]>([]);
@@ -56,6 +57,7 @@ function Search({ onAttempt }: SearchProps) {
 		setSelectedCharacter(character);
 		setGuess("");
 		setListCharacter([]);
+		setClueCharacter(character);
 		onAttempt();
 	};
 
