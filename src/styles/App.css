@@ -20,9 +20,9 @@ html {
 
 .logo {
 	display: block;
-	margin: 15px auto;
-	width: 25rem;
-	height: 7rem;
+	margin: auto;
+	padding: 30px;
+	width: 26rem;
 }
 
 footer {
