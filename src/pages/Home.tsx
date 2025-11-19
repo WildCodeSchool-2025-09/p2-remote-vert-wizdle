@@ -1,14 +1,23 @@
 import { Link } from "react-router";
+import "../styles/Home.css";
 
 function Home() {
 	return (
 		<>
 			<h1>
-				Le parchemin s’ouvre devant toi... sauras-tu percer ses mystères ?
+				Le parchemin s’ouvre devant toi...
+				<br />
+				sauras-tu percer ses mystères ?
 			</h1>
 			<section>
 				<Link to="/rules">
-					<button type="button">📜 Le Grimoire des Règles</button>
+					<button type="button">
+						<img
+							src="./src/assets/images/parchemin-regles.png"
+							alt="parchemin règles"
+						/>
+						Le Grimoire des Règles
+					</button>
 				</Link>
 				<Link to="/game">
 					<button type="button">
