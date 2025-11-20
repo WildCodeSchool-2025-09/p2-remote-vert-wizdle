@@ -19,14 +19,14 @@ function Clue({ attemptCount, todayCharacter }: ClueProps) {
 	}
 	return (
 		<>
-			<button type={"button"} onClick={clueClick}>
+			<button type={"button"} onClick={clueClick} className="clue-button">
 				<img
 					src="./src/assets/images/boule-de-cristal.png"
 					alt="Boule de cristal"
 					className={isDisabled ? "boule-disabled" : "boule-enabled"}
 				/>
 				{isDisabled
-					? `${remainingAttempts} tentatives restantes avant indice`
+					? `Indice dans ${remainingAttempts} essai${remainingAttempts > 1 ? "s" : ""}`
 					: "Indice"}
 			</button>
 			{clueVisible && todayCharacter?.nom && (
