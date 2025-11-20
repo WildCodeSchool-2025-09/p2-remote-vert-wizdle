@@ -1,0 +1,96 @@
+import moment from "moment";
+import "../styles/score.css";
+import "../styles/scoreResponsive.css";
+import imgCoix from "../images/croix.svg";
+import imgSablier from "../images/sablier.svg";
+
+type ScoreProps = {
+	time: number;
+	indice: number;
+	tentative: number;
+	nomPersonnage: string;
+	setScoreView: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+function Score({
+	time,
+	indice,
+	tentative,
+	nomPersonnage,
+	setScoreView,
+}: ScoreProps) {
+	const timeBis = Number(time) || 0;
+	const timeAfficher = moment.utc(timeBis).format("HH:mm:ss");
+	const tentativeBis = Number(tentative) || 0;
+	const indiceBis = Number(indice) || 0;
+	let score = 10500 - timeBis * 0.1 - tentativeBis * 500 - indiceBis * 500;
+	if (score < 0) {
+		score = 0;
+	}
+	const tableauMaison = [
+		"Gryffondor",
+		"Poufsouffle",
+		"Serdaigle",
+		"Serpentard",
+	];
+	const maison =
+		tableauMaison[Math.floor(Math.random() * tableauMaison.length)];
+
+	return (
+		<section id="popop-score">
+			<img
+				src={imgCoix}
+				alt="Une croix"
+				tabIndex={0}
+				onClick={() => setScoreView(false)}
+				onKeyDown={(e) => {
+					if (e.key === "Enter" || e.key === " ") setScoreView(false);
+				}}
+			/>
+			<article>
+				<h2>MAGISTRAL !</h2>
+				<p>{score} pts</p>
+				<p>pour {maison}</p>
+				<div>
+					<img src={imgSablier} alt="Un sablier" />
+					<p>{timeAfficher}</p>
+				</div>
+				<div>
+					<p>
+						Indice utilisé :<span>{indice}</span>
+					</p>
+					<p>
+						Tentatives :<span>{tentative}</span>
+					</p>
+				</div>
+			</article>
+			<article>
+				<p>Carte : {nomPersonnage}</p>
+				<button type="button" aria-label="Une croix">
+					<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+						<title>Icône croix</title>
+						<line
+							x1="50"
+							y1="20"
+							x2="50"
+							y2="80"
+							stroke="white"
+							strokeWidth="10"
+							strokeLinecap="round"
+						/>
+						<line
+							x1="20"
+							y1="50"
+							x2="80"
+							y2="50"
+							stroke="white"
+							strokeWidth="10"
+							strokeLinecap="round"
+						/>
+					</svg>
+				</button>
+			</article>
+		</section>
+	);
+}
+export default Score;
