@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Answers from "../components/Answers";
 import Search from "../components/Search";
+import Timer from "../components/Timer";
 import "../styles/Search.css";
 import Clue from "../components/clue";
 import type { Character } from "../interfaces/interfaces";
+import "../styles/Game.css";
 
 function Game() {
 	const [answers, setAnswers] = useState<Character[]>([]);
@@ -11,6 +13,7 @@ function Game() {
 	const [characters, setCharacters] = useState<Character[]>([]);
 	const [errorApi, setErrorApi] = useState<string | null>(null);
 	const [attemptCount, setAttemptCount] = useState(0);
+	const [time, setTime] = useState(0);
 
 	const today = new Date().toISOString().split("T")[0];
 
@@ -69,9 +72,17 @@ function Game() {
 
 	return (
 		<>
-			<Clue attemptCount={attemptCount} todayCharacter={todayCharacter} />
+			<section className="timer-clue">
+				<article>
+					<Timer time={time} />
+				</article>
+				<article>
+					<Clue attemptCount={attemptCount} todayCharacter={todayCharacter} />
+				</article>
+			</section>
 			{!victory && (
 				<Search
+					setTime={setTime}
 					setAnswers={setAnswers}
 					errorApi={errorApi}
 					characters={characters}
