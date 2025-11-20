@@ -67,7 +67,7 @@ figcaption {
 	}
 
 	.background aside {
-		position: absolute; /* au lieu de fixed */
+		position: absolute;
 		top: 20px;
 		right: 20px;
 	}
