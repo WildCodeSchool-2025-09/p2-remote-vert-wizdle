@@ -14,6 +14,7 @@ function Game() {
 	const [errorApi, setErrorApi] = useState<string | null>(null);
 	const [attemptCount, setAttemptCount] = useState(0);
 	const [time, setTime] = useState(0);
+	const [useClue, setUseClue] = useState(false);
 
 	const today = new Date().toISOString().split("T")[0];
 
@@ -77,7 +78,11 @@ function Game() {
 					<Timer time={time} />
 				</article>
 				<article>
-					<Clue attemptCount={attemptCount} todayCharacter={todayCharacter} />
+					<Clue
+						attemptCount={attemptCount}
+						todayCharacter={todayCharacter}
+						setUseClue={setUseClue}
+					/>
 				</article>
 			</section>
 			{!victory && (
@@ -99,7 +104,11 @@ function Game() {
 				todayCharacter={todayCharacter}
 			/>
 
-			{victory && <h1>Victoire !!!!!!!!</h1>}
+			{victory && (
+				<h1>
+					{useClue ? "Victoire avec indice !!!!!!!!" : "Victoire !!!!!!!!"}
+				</h1>
+			)}
 		</>
 	);
 }

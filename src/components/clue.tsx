@@ -5,9 +5,10 @@ import type { Character } from "../interfaces/interfaces";
 interface ClueProps {
 	attemptCount: number;
 	todayCharacter: Character | undefined;
+	setUseClue: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Clue({ attemptCount, todayCharacter }: ClueProps) {
+function Clue({ attemptCount, todayCharacter, setUseClue }: ClueProps) {
 	const isDisabled = attemptCount < 5;
 	const remainingAttempts = 5 - attemptCount;
 	const [clueVisible, setClueVisible] = useState(false);
@@ -15,6 +16,7 @@ function Clue({ attemptCount, todayCharacter }: ClueProps) {
 	function clueClick() {
 		if (!isDisabled) {
 			setClueVisible((prev) => !prev);
+			setUseClue(true);
 		}
 	}
 	return (
