@@ -4,10 +4,10 @@ import type { Character } from "../interfaces/interfaces";
 
 interface ClueProps {
 	attemptCount: number;
-	charactere: Character | null;
+	todayCharacter: Character | undefined;
 }
 
-function Clue({ attemptCount, charactere }: ClueProps) {
+function Clue({ attemptCount, todayCharacter }: ClueProps) {
 	const isDisabled = attemptCount < 5;
 	const remainingAttempts = 5 - attemptCount;
 	const [clueVisible, setClueVisible] = useState(false);
@@ -26,13 +26,13 @@ function Clue({ attemptCount, charactere }: ClueProps) {
 					className={isDisabled ? "boule-disabled" : "boule-enabled"}
 				/>
 				{isDisabled
-					? `(${remainingAttempts} tentatives restantes avant indice)`
+					? `${remainingAttempts} tentatives restantes avant indice`
 					: "Indice"}
 			</button>
-			{clueVisible && charactere?.nom && (
+			{clueVisible && todayCharacter?.nom && (
 				<div className="clue-container">
 					Voici un indice pour vous aider : La première lettre du nom du
-					personnage est "{charactere.nom[0]}"
+					personnage est "{todayCharacter.nom[0]}"
 				</div>
 			)}
 		</>

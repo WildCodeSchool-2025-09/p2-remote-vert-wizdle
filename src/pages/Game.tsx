@@ -11,7 +11,6 @@ function Game() {
 	const [characters, setCharacters] = useState<Character[]>([]);
 	const [errorApi, setErrorApi] = useState<string | null>(null);
 	const [attemptCount, setAttemptCount] = useState(0);
-	const [clueCharactere, setClueCharactere] = useState<Character | null>(null);
 
 	const today = new Date().toISOString().split("T")[0];
 
@@ -45,6 +44,8 @@ function Game() {
 		array: Character[],
 		baseSeed = 11092025,
 	) {
+		if (array.length === 0) return undefined;
+
 		const totalDays = dayFromBegin(date);
 		const cycleLength = array.length;
 		const cycleNumber = Math.floor(totalDays / cycleLength);
@@ -54,7 +55,8 @@ function Game() {
 		return shuffledCharacters[index];
 	}
 
-	const todayCharacter = getCharacterOfDate(today, characters);
+	const todayCharacter =
+		characters.length > 0 ? getCharacterOfDate(today, characters) : undefined;
 
 	useEffect(() => {
 		fetch("https://test-api-5zsf.onrender.com/harry_potter")
@@ -67,7 +69,7 @@ function Game() {
 
 	return (
 		<>
-			<Clue attemptCount={attemptCount} charactere={clueCharactere} />
+			<Clue attemptCount={attemptCount} todayCharacter={todayCharacter} />
 			{!victory && (
 				<Search
 					setAnswers={setAnswers}
@@ -78,7 +80,6 @@ function Game() {
 					setVictory={setVictory}
 					todayCharacter={todayCharacter}
 					onAttempt={incrementAttempt}
-					setClueCharacter={setClueCharactere}
 				/>
 			)}
 			<Answers

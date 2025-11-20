@@ -3,7 +3,6 @@ import type { Character } from "../interfaces/interfaces";
 
 interface SearchProps {
 	onAttempt: () => void;
-	setClueCharacter: (character: Character | null) => void;
 	setAnswers: React.Dispatch<React.SetStateAction<Character[]>>;
 	errorApi: string | null;
 	characters: Character[];
@@ -21,7 +20,6 @@ function Search({
 	characters,
 	setVictory,
 	onAttempt,
-	setClueCharacter,
 }: SearchProps) {
 	const [guess, setGuess] = useState("");
 	const [listCharacter, setListCharacter] = useState<Character[]>([]);
@@ -64,7 +62,6 @@ function Search({
 	const selectCharacter = (character: Character) => {
 		setGuess("");
 		setListCharacter([]);
-		setClueCharacter(character);
 		onAttempt();
 		setAnswers((prev) => [character, ...prev]);
 		victory(character);

@@ -7,3 +7,15 @@
 	opacity: 1;
 	filter: none;
 }
+button {
+	background-color: var(--background-all-50);
+	color: antiquewhite;
+	border-radius: 12px;
+	cursor: pointer;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+	transition: all 0.2s ease-in-out;
+	font-family: var(--font-text);
+	letter-spacing: 0.05rem;
+	font-size: var(--font-size-M);
+	border-image: var(--border-color-first) 1;
+}
