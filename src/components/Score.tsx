@@ -41,10 +41,9 @@ function Score({
 			<img
 				src={imgCoix}
 				alt="Une croix"
-				tabIndex={0}
 				onClick={() => setScoreView(false)}
 				onKeyDown={(e) => {
-					if (e.key === "Enter" || e.key === " ") setScoreView(false);
+					if (e.key === "Enter") setScoreView(false);
 				}}
 			/>
 			<article>
