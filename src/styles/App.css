@@ -2,12 +2,6 @@ html {
 	font-size: 12px;
 }
 
-@media screen and (min-width: 700px) {
-	html {
-		font-size: 16px;
-	}
-}
-
 .background {
 	height: 100vh;
 	width: 100%;
@@ -22,13 +16,59 @@ header {
 }
 
 header a {
-	display: block;
-	width: 26rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 22rem;
 	margin: auto;
+}
+
+header img {
+	width: 100%;
 }
 
 footer {
 	text-align: center;
 	color: white;
 	margin-top: auto;
+}
+
+.background aside {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.background aside {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	justify-content: center;
+	z-index: 3;
+}
+
+figure,
+audio {
+	width: 100px;
+	height: 40px;
+	opacity: 0.8;
+}
+
+figcaption {
+	display: none;
+}
+
+@media screen and (min-width: 700px) {
+	html {
+		font-size: 16px;
+	}
+
+	header a {
+		width: 26rem;
+	}
+
+	.background aside {
+		position: absolute; /* au lieu de fixed */
+		top: 20px;
+		right: 20px;
+	}
 }
