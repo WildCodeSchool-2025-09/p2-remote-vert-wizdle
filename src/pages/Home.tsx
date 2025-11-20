@@ -4,12 +4,12 @@ import "../styles/Home.css";
 function Home() {
 	return (
 		<>
-			<h1>
+			<h1 className="home-title">
 				Le parchemin s’ouvre devant toi...
 				<br />
 				sauras-tu percer ses mystères ?
 			</h1>
-			<section>
+			<section className="home-section">
 				<Link to="/rules">
 					<button type="button">
 						<img

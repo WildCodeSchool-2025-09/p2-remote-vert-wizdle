@@ -1,4 +1,4 @@
-h1 {
+.home-title {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,18 +16,18 @@ h1 {
 	background-color: var(--background-all-90);
 }
 
-section {
+section.home-section {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	gap: 20px;
 }
 
-section a {
+section.home-section a {
 	text-decoration: none;
 }
 
-button {
+section.home-section button {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -44,26 +44,26 @@ button {
 	font-weight: 100;
 }
 
-button img {
+section.home-section button img {
 	width: 40px;
 	height: 40px;
 }
 
 @media screen and (min-width: 700px) {
-	h1 {
+	.home-title {
 		margin: 80px auto;
 	}
 
-	section {
+	section.home-section {
 		flex-direction: row;
 	}
 
-	button {
+	section.home-section button {
 		width: 100%;
 		margin: 0;
 	}
 
-	button:hover {
+	section.home-section button:hover {
 		cursor: pointer;
 		scale: 1.04;
 		box-shadow: 0px 0px 10px 4px #ffffff;
