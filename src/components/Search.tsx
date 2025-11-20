@@ -2,25 +2,28 @@ import { useState } from "react";
 import type { Character } from "../interfaces/interfaces";
 
 interface SearchProps {
-	setSelectedCharacter: React.Dispatch<React.SetStateAction<Character | null>>;
-	setTableauTry: React.Dispatch<React.SetStateAction<Character[]>>;
+	setAnswers: React.Dispatch<React.SetStateAction<Character[]>>;
 	errorApi: string | null;
-	dataApi: Character[];
+	characters: Character[];
 	setErrorApi: React.Dispatch<React.SetStateAction<string | null>>;
-	tableauTry: Character[];
+	answers: Character[];
+	setVictory: React.Dispatch<React.SetStateAction<boolean>>;
+	todayCharacter: Character | undefined;
 }
 
 function Search({
-	setSelectedCharacter,
-	setTableauTry,
 	errorApi,
-	dataApi,
 	setErrorApi,
-	tableauTry,
+	answers,
+	setAnswers,
+	todayCharacter,
+	characters,
+	setVictory,
 }: SearchProps) {
 	const [guess, setGuess] = useState("");
 	const [listCharacter, setListCharacter] = useState<Character[]>([]);
 	const [resultNotFound, setResultNotFound] = useState(false);
+
 	const normalize = (text: string) =>
 		text
 			.normalize("NFD")
@@ -30,15 +33,14 @@ function Search({
 		const value = e.target.value;
 		setGuess(value);
 		setErrorApi(null);
-
 		setResultNotFound(false);
 
 		if (value.trim() === "") {
 			setListCharacter([]);
 		} else {
-			const results = dataApi
+			const results = characters
 				.filter((item) => normalize(item.nom).startsWith(normalize(value)))
-				.filter((item) => !tableauTry.some((character) => character === item))
+				.filter((item) => !answers.some((character) => character === item))
 				.sort((a, b) => a.nom.localeCompare(b.nom));
 
 			setListCharacter(results);
@@ -49,11 +51,18 @@ function Search({
 		}
 	};
 
+	function victory(character: Character) {
+		if (!character || !characters) return;
+		if (character.id === todayCharacter?.id) {
+			setVictory(true);
+		}
+	}
+
 	const selectCharacter = (character: Character) => {
-		setSelectedCharacter(character);
 		setGuess("");
 		setListCharacter([]);
-		setTableauTry((prev) => [character, ...prev]);
+		setAnswers((prev) => [character, ...prev]);
+		victory(character);
 	};
 
 	return (

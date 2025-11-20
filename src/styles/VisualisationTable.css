@@ -76,9 +76,15 @@ body {
 	vertical-align: middle;
 }
 
-.cell {
+section table thead tr th {
 	min-width: 150px;
 }
+
+section table thead tr th:nth-child(1) {
+	min-width: 250px;
+	height: 50px;
+}
+
 .cell-principal img {
 	max-height: 80px;
 	max-width: 80px;
@@ -97,10 +103,7 @@ body {
 	font-size: var(--font-size-L);
 	width: 60%;
 }
-.cell-name {
-	min-width: 250px;
-	height: 50px;
-}
+
 .table-container {
 	max-height: 600px;
 	overflow-y: auto;
