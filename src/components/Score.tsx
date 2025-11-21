@@ -3,13 +3,13 @@ import "../styles/score.css";
 import "../styles/scoreResponsive.css";
 import imgCoix from "../images/croix.svg";
 import imgSablier from "../images/sablier.svg";
-import { Character } from "../interfaces/interfaces";
+import type { Character } from "../interfaces/interfaces";
 
 type ScoreProps = {
 	time: number;
 	usedClue: boolean;
 	attemptCount: number;
-	todayCharacter:Character;
+	todayCharacter: Character;
 	setScoreView: React.Dispatch<React.SetStateAction<boolean>>;
 };
 

@@ -10,7 +10,7 @@ interface SearchProps {
 	todayCharacter: Character;
 	characters: Character[];
 	setVictory: React.Dispatch<React.SetStateAction<boolean>>;
-	setScoreView:React.Dispatch<React.SetStateAction<boolean>>;
+	setScoreView: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function Search({
@@ -78,8 +78,8 @@ function Search({
 		if (character.id === todayCharacter?.id) {
 			setVictory(true);
 			setTimeout(() => {
-      			setScoreView(true);
-    		},5000);
+				setScoreView(true);
+			}, 5000);
 			stop();
 		}
 	}

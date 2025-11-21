@@ -94,7 +94,7 @@ function Game() {
 				todayCharacter={todayCharacter}
 			/>
 
-			{victory && scoreView &&(
+			{victory && scoreView && (
 				<div className="overlay">
 					<Score
 						time={time}
