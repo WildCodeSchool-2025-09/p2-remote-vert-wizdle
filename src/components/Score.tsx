@@ -6,7 +6,7 @@ import imgSablier from "../images/sablier.svg";
 
 type ScoreProps = {
 	time: number;
-	indice: number;
+	useClue: boolean;
 	tentative: number;
 	nomPersonnage: string;
 	setScoreView: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,7 +14,7 @@ type ScoreProps = {
 
 function Score({
 	time,
-	indice,
+	useClue,
 	tentative,
 	nomPersonnage,
 	setScoreView,
@@ -22,8 +22,8 @@ function Score({
 	const timeBis = Number(time) || 0;
 	const timeAfficher = moment.utc(timeBis).format("HH:mm:ss");
 	const tentativeBis = Number(tentative) || 0;
-	const indiceBis = Number(indice) || 0;
-	let score = 10500 - timeBis * 0.1 - tentativeBis * 500 - indiceBis * 500;
+	const indiceBis = useClue ? 500 : 0;
+	let score = 10500 - timeBis * 0.1 - tentativeBis * 500 - indiceBis;
 	if (score < 0) {
 		score = 0;
 	}
@@ -57,7 +57,7 @@ function Score({
 				</div>
 				<div>
 					<p>
-						Indice utilisé :<span>{indice}</span>
+						Indice utilisé :<span>{useClue}</span>
 					</p>
 					<p>
 						Tentatives :<span>{tentative}</span>
