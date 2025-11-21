@@ -18,10 +18,6 @@ function Game() {
 
 	const today = new Date().toISOString().split("T")[0];
 
-	function incrementAttempt() {
-		setAttemptCount((prev) => prev + 1);
-	}
-
 	function dayFromBegin(date: string, beginning = "2025-11-18") {
 		const today = new Date(date);
 		const beginningDate = new Date(beginning);
@@ -95,7 +91,7 @@ function Game() {
 					answers={answers}
 					setVictory={setVictory}
 					todayCharacter={todayCharacter}
-					onAttempt={incrementAttempt}
+					setAttemptCount={setAttemptCount}
 				/>
 			)}
 			<Answers
