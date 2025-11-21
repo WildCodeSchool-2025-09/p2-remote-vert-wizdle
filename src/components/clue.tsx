@@ -5,10 +5,10 @@ import type { Character } from "../interfaces/interfaces";
 interface ClueProps {
 	attemptCount: number;
 	todayCharacter: Character | undefined;
-	setUseClue: React.Dispatch<React.SetStateAction<boolean>>;
+	setUsedClue: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Clue({ attemptCount, todayCharacter, setUseClue }: ClueProps) {
+function Clue({ attemptCount, todayCharacter, setUsedClue }: ClueProps) {
 	const isDisabled = attemptCount < 5;
 	const remainingAttempts = 5 - attemptCount;
 	const [clueVisible, setClueVisible] = useState(false);
@@ -16,7 +16,7 @@ function Clue({ attemptCount, todayCharacter, setUseClue }: ClueProps) {
 	function clueClick() {
 		if (!isDisabled) {
 			setClueVisible((prev) => !prev);
-			setUseClue(true);
+			setUsedClue(true);
 		}
 	}
 	return (
@@ -32,10 +32,10 @@ function Clue({ attemptCount, todayCharacter, setUseClue }: ClueProps) {
 					: "Indice"}
 			</button>
 			{clueVisible && todayCharacter?.nom && (
-				<div className="clue-container">
+				<p className="clue-container">
 					Voici un indice pour vous aider : La première lettre du nom du
 					personnage est "{todayCharacter.nom[0]}"
-				</div>
+				</p>
 			)}
 		</>
 	);

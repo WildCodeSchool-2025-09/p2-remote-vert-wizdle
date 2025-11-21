@@ -14,7 +14,7 @@ function Game() {
 	const [errorApi, setErrorApi] = useState<string | null>(null);
 	const [attemptCount, setAttemptCount] = useState(0);
 	const [time, setTime] = useState(0);
-	const [useClue, setUseClue] = useState(false);
+	const [usedClue, setUsedClue] = useState(false);
 
 	const today = new Date().toISOString().split("T")[0];
 
@@ -81,7 +81,7 @@ function Game() {
 					<Clue
 						attemptCount={attemptCount}
 						todayCharacter={todayCharacter}
-						setUseClue={setUseClue}
+						setUsedClue={setUsedClue}
 					/>
 				</article>
 			</section>
@@ -106,7 +106,7 @@ function Game() {
 
 			{victory && (
 				<h1>
-					{useClue ? "Victoire avec indice !!!!!!!!" : "Victoire !!!!!!!!"}
+					{usedClue ? "Victoire avec indice !!!!!!!!" : "Victoire !!!!!!!!"}
 				</h1>
 			)}
 		</>
