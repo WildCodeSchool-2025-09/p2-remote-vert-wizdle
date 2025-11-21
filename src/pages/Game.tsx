@@ -5,6 +5,7 @@ import Timer from "../components/Timer";
 import "../styles/Search.css";
 import type { Character } from "../interfaces/interfaces";
 import "../styles/Game.css";
+import Score from "../components/Score";
 
 function Game() {
 	const [answers, setAnswers] = useState<Character[]>([]);
@@ -12,6 +13,9 @@ function Game() {
 	const [characters, setCharacters] = useState<Character[]>([]);
 	const [errorApi, setErrorApi] = useState<string | null>(null);
 	const [time, setTime] = useState(0);
+	const [usedClue, setusedClue] = useState(false);
+	const [attemptCount, setAttemptCount] = useState(0);
+	const [scoreView, setScoreView] = useState(false);
 
 	const today = new Date().toISOString().split("T")[0];
 
@@ -81,6 +85,7 @@ function Game() {
 					answers={answers}
 					setVictory={setVictory}
 					todayCharacter={todayCharacter}
+					setScoreView={setScoreView}
 				/>
 			)}
 			<Answers
@@ -89,7 +94,17 @@ function Game() {
 				todayCharacter={todayCharacter}
 			/>
 
-			{victory && <h1>Victoire !!!!!!!!</h1>}
+			{victory && scoreView && (
+				<div className="overlay">
+					<Score
+						time={time}
+						usedClue={usedClue}
+						attemptCount={attemptCount}
+						todayCharacter={todayCharacter}
+						setScoreView={setScoreView}
+					/>
+				</div>
+			)}
 		</>
 	);
 }
