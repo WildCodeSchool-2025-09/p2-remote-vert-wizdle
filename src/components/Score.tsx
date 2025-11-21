@@ -41,10 +41,10 @@ function Score({
 			<img
 				src={imgCoix}
 				alt="Une croix"
-				tabIndex={0}
 				onClick={() => setScoreView(false)}
 				onKeyDown={(e) => {
-					if (e.key === "Enter" || e.key === " ") setScoreView(false);
+					if (e.key === "Enter" || e.key === "Spacebar" || e.key === " ")
+						setScoreView(false);
 				}}
 			/>
 			<article>
@@ -56,11 +56,11 @@ function Score({
 					<p>{timeAfficher}</p>
 				</div>
 				<div>
-					<p>Indice utilisé :
-						<span>{indice}</span>
+					<p>
+						Indice utilisé :<span>{indice}</span>
 					</p>
-					<p>Tentatives :
-						<span>{tentative}</span>
+					<p>
+						Tentatives :<span>{tentative}</span>
 					</p>
 				</div>
 			</article>
