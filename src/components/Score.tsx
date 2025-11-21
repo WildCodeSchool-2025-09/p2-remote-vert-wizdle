@@ -3,26 +3,27 @@ import "../styles/score.css";
 import "../styles/scoreResponsive.css";
 import imgCoix from "../images/croix.svg";
 import imgSablier from "../images/sablier.svg";
+import { Character } from "../interfaces/interfaces";
 
 type ScoreProps = {
 	time: number;
-	useClue: boolean;
-	tentative: number;
-	nomPersonnage: string;
+	usedClue: boolean;
+	attemptCount: number;
+	todayCharacter:Character;
 	setScoreView: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 function Score({
 	time,
-	useClue,
-	tentative,
-	nomPersonnage,
+	usedClue,
+	attemptCount,
+	todayCharacter,
 	setScoreView,
 }: ScoreProps) {
 	const timeBis = Number(time) || 0;
 	const timeAfficher = moment.utc(timeBis).format("HH:mm:ss");
-	const tentativeBis = Number(tentative) || 0;
-	const indiceBis = useClue ? 500 : 0;
+	const tentativeBis = Number(attemptCount) || 0;
+	const indiceBis = usedClue ? 500 : 0;
 	let score = 10500 - timeBis * 0.1 - tentativeBis * 500 - indiceBis;
 	if (score < 0) {
 		score = 0;
@@ -57,15 +58,15 @@ function Score({
 				</div>
 				<div>
 					<p>
-						Indice utilisé :<span>{useClue}</span>
+						Indice utilisé :<span>{usedClue}</span>
 					</p>
 					<p>
-						Tentatives :<span>{tentative}</span>
+						Tentatives :<span>{attemptCount}</span>
 					</p>
 				</div>
 			</article>
 			<article>
-				<p>Carte : {nomPersonnage}</p>
+				<p>Carte : {todayCharacter.nom}</p>
 				<button type="button" aria-label="Une croix">
 					<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 						<title>Icône croix</title>

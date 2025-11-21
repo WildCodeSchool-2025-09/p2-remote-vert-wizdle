@@ -13,9 +13,8 @@ function Game() {
 	const [characters, setCharacters] = useState<Character[]>([]);
 	const [errorApi, setErrorApi] = useState<string | null>(null);
 	const [time, setTime] = useState(0);
-	const [useClue, setuseClue] = useState(false);
-	const [tentative, setTentative] = useState(0);
-	const [nomPersonnage, setNomPersonnage] = useState("Toto");
+	const [usedClue, setusedClue] = useState(false);
+	const [attemptCount, setAttemptCount] = useState(0);
 	const [scoreView, setScoreView] = useState(false);
 
 	const today = new Date().toISOString().split("T")[0];
@@ -86,6 +85,7 @@ function Game() {
 					answers={answers}
 					setVictory={setVictory}
 					todayCharacter={todayCharacter}
+					setScoreView={setScoreView}
 				/>
 			)}
 			<Answers
@@ -94,13 +94,13 @@ function Game() {
 				todayCharacter={todayCharacter}
 			/>
 
-			{victory && scoreView && (
+			{victory && scoreView &&(
 				<div className="overlay">
 					<Score
 						time={time}
-						useClue={useClue}
-						tentative={tentative}
-						nomPersonnage={nomPersonnage}
+						usedClue={usedClue}
+						attemptCount={attemptCount}
+						todayCharacter={todayCharacter}
 						setScoreView={setScoreView}
 					/>
 				</div>
