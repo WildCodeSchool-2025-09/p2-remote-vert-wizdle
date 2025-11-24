@@ -6,7 +6,7 @@ function MarauderMapClose() {
 	const navigate = useNavigate();
 
 	return (
-		<main className="marauder-container">
+		<div className="marauder-container">
 			<button
 				className="button-reset"
 				type="button"
@@ -19,7 +19,7 @@ function MarauderMapClose() {
 					alt="carte du marauder"
 				/>
 			</button>
-		</main>
+		</div>
 	);
 }
 export default MarauderMapClose;

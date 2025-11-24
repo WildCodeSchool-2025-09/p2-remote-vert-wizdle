@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import baguettemagique from "../assets/images/baguette-magique.png";
 import indice from "../assets/images/indice.webp";
 import marauderMapDroite from "../assets/images/marauder-map-droite.jpg";
 import marauderMapGauche from "../assets/images/marauder-map-gauche.jpg";
@@ -58,6 +59,7 @@ function Rules() {
 			setErrorOath("");
 		} else {
 			setValidOath(false);
+			setAnswerOath("");
 			setErrorOath(
 				"Pense à regarder de nouveau Harry Potter ... Un indice t'attend juste en dessous",
 			);
@@ -83,7 +85,7 @@ function Rules() {
 	}, [validOath]);
 
 	return (
-		<main className="marauder-open-container">
+		<div className="marauder-open-container">
 			<section className="marauder-open-map">
 				<img
 					src={marauderMapGauche}
@@ -138,7 +140,9 @@ function Rules() {
 											title="Affiche un indice"
 											onClick={handleShowClue}
 										>
-											<img src={indice} alt="indice" className="clue-image" />
+											{errorOath && (
+												<img src={indice} alt="indice" className="clue-image" />
+											)}
 										</button>
 										<p className={`error-msg ${showClue ? "visible" : ""}`}>
 											{requiredOath}
@@ -158,7 +162,8 @@ function Rules() {
 											onClick={() => navigate("/game")}
 											className="game-button"
 										>
-											A toi de jouer, sorcier !
+											<img src={baguettemagique} alt="baguette magique" /> A toi
+											de jouer, sorcier !
 										</button>
 									)}
 								</section>
@@ -167,7 +172,7 @@ function Rules() {
 					</article>
 				)}
 			</section>
-		</main>
+		</div>
 	);
 }
 export default Rules;

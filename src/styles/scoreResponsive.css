@@ -13,7 +13,7 @@
 		width: 25%;
 		height: 12%;
 	}
-	#popop-score div:nth-of-type(2) {
+	#popop-score .stat {
 		gap: 4rem;
 	}
 }

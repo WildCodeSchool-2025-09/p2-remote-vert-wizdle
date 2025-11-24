@@ -49,26 +49,26 @@ function Score({
 						setScoreView(false);
 				}}
 			/>
-			<article>
-				<h2>MAGISTRAL !</h2>
-				<p>{score} pts</p>
-				<p>pour {maison}</p>
-				<div>
-					<img src={imgSablier} alt="Un sablier" />
-					<p>{timeAfficher}</p>
-				</div>
-				<div>
-					<p>
-						Indice utilisé :<span>{usedClue}</span>
-					</p>
-					<p>
-						Tentatives :<span>{attemptCount}</span>
-					</p>
-				</div>
-			</article>
-			<article>
+			<div className="popup-container">
+				<article>
+					<h2>MAGISTRAL !</h2>
+					<p>{score} pts</p>
+					<p>pour {maison}</p>
+					<div>
+						<img src={imgSablier} alt="Un sablier" />
+						<p>{timeAfficher}</p>
+					</div>
+					<div className="stat">
+						<p>
+							Indice utilisé :<span>{usedClue ? "oui" : "non"}</span>
+						</p>
+						<p>
+							Tentatives :<span>{attemptCount}</span>
+						</p>
+					</div>
+				</article>
 				<CharacterCardContainer todayCharacter={todayCharacter} />
-			</article>
+			</div>
 		</section>
 	);
 }

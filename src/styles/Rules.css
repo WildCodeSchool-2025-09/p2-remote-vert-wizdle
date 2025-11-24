@@ -1,6 +1,5 @@
 /* PAGE DE BASE */
 .marauder-open-container {
-	min-height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -112,6 +111,7 @@
 	.marauder-open-map {
 		width: 260px;
 		height: 340px;
+		margin-top: 20px;
 	}
 
 	.parchment-container {
@@ -155,12 +155,6 @@
 		to {
 			transform: translateX(120px);
 		}
-	}
-
-	.crystal-section {
-		display: flex;
-		justify-content: center;
-		align-items: flex-start;
 	}
 }
 /* ================================================*/
@@ -228,6 +222,10 @@
 }
 
 .game-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
 	opacity: 0;
 	animation: fadeIn 1.3s forwards ease-out;
 	margin-top: 18px;
@@ -239,6 +237,10 @@
 	border-radius: 8px;
 	cursor: pointer;
 	font-family: var(--font-title);
+}
+
+.game-button img {
+	width: 15px;
 }
 
 @keyframes fadeIn {
@@ -272,15 +274,17 @@
 
 .validation-image {
 	position: absolute;
-	bottom: 180px; /* permet de mettre le boutton en visuel par dessus le textarea*/
-	right: 10px;
+	bottom: 70%; /* permet de mettre le boutton en visuel par dessus le textarea*/
+	right: 2%;
 	width: 28px;
 }
 
 .crystal-section {
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	height: 124px;
 }
 
 .clue-image {
