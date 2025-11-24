@@ -9,7 +9,7 @@ type ScoreProps = {
 	time: number;
 	usedClue: boolean;
 	attemptCount: number;
-	todayCharacter: Character;
+	todayCharacter: Character | undefined;
 	setScoreView: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
@@ -66,7 +66,7 @@ function Score({
 				</div>
 			</article>
 			<article>
-				<p>Carte : {todayCharacter.nom}</p>
+				<p>Carte : {todayCharacter?.nom}</p>
 				<button type="button" aria-label="Une croix">
 					<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
 						<title>Icône croix</title>
