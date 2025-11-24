@@ -4,6 +4,7 @@ import "../styles/scoreResponsive.css";
 import imgCoix from "../images/croix.svg";
 import imgSablier from "../images/sablier.svg";
 import type { Character } from "../interfaces/interfaces";
+import CharacterCardContainer from "./CharacterCardContainer";
 
 type ScoreProps = {
 	time: number;
@@ -66,30 +67,7 @@ function Score({
 				</div>
 			</article>
 			<article>
-				<p>Carte : {todayCharacter?.nom}</p>
-				<button type="button" aria-label="Une croix">
-					<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-						<title>Icône croix</title>
-						<line
-							x1="50"
-							y1="20"
-							x2="50"
-							y2="80"
-							stroke="white"
-							strokeWidth="10"
-							strokeLinecap="round"
-						/>
-						<line
-							x1="20"
-							y1="50"
-							x2="80"
-							y2="50"
-							stroke="white"
-							strokeWidth="10"
-							strokeLinecap="round"
-						/>
-					</svg>
-				</button>
+				<CharacterCardContainer todayCharacter={todayCharacter} />
 			</article>
 		</section>
 	);
