@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router";
-import parcheminClose from "../assets/images/marauder-map-close.jpg";
 import "../styles/MarauderMapClose.css";
 
 function MarauderMapClose() {
@@ -15,7 +14,7 @@ function MarauderMapClose() {
 			>
 				<img
 					className="marauder-map"
-					src={parcheminClose}
+					src="/images/marauder-map-close.jpg"
 					alt="carte du marauder"
 				/>
 			</button>

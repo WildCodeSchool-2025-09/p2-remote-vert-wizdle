@@ -1,11 +1,10 @@
 import { Link } from "react-router";
-import logo from "../assets/images/logo.webp";
 
 function Header() {
 	return (
 		<header>
 			<Link to="/">
-				<img src={logo} alt="Wizdle" />
+				<img src="/images/logo.webp" alt="Wizdle" />
 			</Link>
 		</header>
 	);

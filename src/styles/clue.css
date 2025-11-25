@@ -23,7 +23,7 @@
 	background: var(--background-all-90);
 	border-image: var(--border-color-first) 1;
 	font-family: var(--font-text);
-	height: 8.3rem;
+	height: 110px;
 }
 .clue-button img {
 	width: 3rem;
@@ -35,9 +35,9 @@
 	color: antiquewhite;
 	background: var(--background-all-50);
 }
+
 @media screen and (min-width: 700px) {
 	.clue-button {
 		flex-direction: row;
-		height: 5.7rem;
 	}
 }

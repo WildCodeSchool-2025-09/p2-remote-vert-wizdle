@@ -6,6 +6,7 @@
 	gap: 8px;
 	width: 100%;
 	border: 3px solid;
+	height: 110px;
 	border-radius: 8px;
 	padding: 10px 0px;
 	font-size: var(--font-size-L);

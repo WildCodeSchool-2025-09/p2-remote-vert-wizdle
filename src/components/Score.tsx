@@ -25,7 +25,9 @@ function Score({
 	const timeAfficher = moment.utc(timeBis).format("HH:mm:ss");
 	const tentativeBis = Number(attemptCount) || 0;
 	const indiceBis = usedClue ? 500 : 0;
-	let score = 10500 - timeBis * 0.1 - tentativeBis * 500 - indiceBis;
+	let score = Math.floor(
+		10500 - timeBis * 0.1 - tentativeBis * 500 - indiceBis,
+	);
 	if (score < 0) {
 		score = 0;
 	}
@@ -41,17 +43,25 @@ function Score({
 	return (
 		<section id="popop-score">
 			<img
+				src="/images/carte_chateau.png"
+				alt="carte-maraudeur"
+				className="img-chato"
+			/>
+
+			<img
 				src={imgCoix}
 				alt="Une croix"
+				className="croix-close"
 				onClick={() => setScoreView(false)}
 				onKeyDown={(e) => {
 					if (e.key === "Enter" || e.key === "Spacebar" || e.key === " ")
 						setScoreView(false);
 				}}
 			/>
+
 			<div className="popup-container">
 				<article>
-					<h2>MAGISTRAL !</h2>
+					<h2>Magistral !</h2>
 					<p>{score} pts</p>
 					<p>pour {maison}</p>
 					<div>

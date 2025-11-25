@@ -2,7 +2,7 @@
 	background: rgb(233, 218, 174);
 	font-family: var(--font-title);
 	letter-spacing: 0.05px;
-	width: 25%;
+	width: 40%;
 	border-radius: 1rem;
 	border: 0.25rem solid #5b4c1f;
 	display: flex;
@@ -89,7 +89,7 @@
 
 @media screen and (max-width: 700px) {
 	.character-card-container {
-		width: 63vw;
+		width: 50%;
 		max-width: 435px;
 	}
 }

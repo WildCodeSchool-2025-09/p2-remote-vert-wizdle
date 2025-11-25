@@ -1,31 +1,20 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import baguettemagique from "../assets/images/baguette-magique.png";
-import indice from "../assets/images/indice.webp";
-import marauderMapDroite from "../assets/images/marauder-map-droite.jpg";
-import marauderMapGauche from "../assets/images/marauder-map-gauche.jpg";
-import parcheminVide from "../assets/images/parchemin-vide.webp";
-import validationSerment from "../assets/images/validation-serment2.png";
 import "../styles/Rules.css";
 
-const fullText = `🪄 Règles du jeu – 
+const fullText = `🪄 WIZDLE est un jeu de déduction dans l’univers d’Harry Potter.
 
-WIZDLE est un jeu de déduction dans l’univers d’Harry Potter.
+Chaque jour, un personnage mystère est tiré au sort. Votre but : le deviner en un minimum d’essais et de temps.
 
-Chaque jour, un personnage mystère est choisi aléatoirement.
-Votre mission est de le deviner en un minimum d’essais et de temps.
+Sélectionnez un personnage via la barre de recherche pour valider une tentative.
+Un tableau indique, pour chaque caractéristique (espèce, genre, sang, maison, statut de vie, cheveux) si elle est :
 
-Choisissez un personnage via la barre de recherche et validez votre tentative.
+🟩 Correcte
+🟥 Incorrecte
 
-Un tableau affiche les retours pour chaque caractéristique : espèce, genre, sang, maison, statut de vie et cheveux.
+Utilisez ces retours pour affiner votre choix.
 
-🟩 Vert = la caractéristique est correcte.
-
-🟥 Rouge = elle est incorrecte.
-
-Affinez vos choix en fonction des retours.
-
-Un bouton Indice apparaît après plusieurs essais et révèle la première lettre du prénom (mais réduit le score).
+Après plusieurs essais, un bouton Indice apparaît : il révèle la première lettre du prénom (mais réduit le score).
 
 Votre score final dépend des tentatives, du temps et de l’usage de l’indice.`;
 
@@ -36,7 +25,6 @@ function Rules() {
 	const [validOath, setValidOath] = useState(false);
 	const [gameButton, setGameButton] = useState(false);
 	const [showClue, setShowClue] = useState(false);
-	const [displayedText, setDisplayedText] = useState("");
 	const navigate = useNavigate();
 	const requiredOath =
 		"je jure solennellement que mes intentions sont mauvaises";
@@ -72,15 +60,7 @@ function Rules() {
 
 	useEffect(() => {
 		if (validOath) {
-			let i = 0;
-			const interval = setInterval(() => {
-				setDisplayedText(fullText.slice(0, i));
-				i++;
-				if (i > fullText.length) {
-					clearInterval(interval);
-					setGameButton(true);
-				}
-			}, 10);
+			setGameButton(true);
 		}
 	}, [validOath]);
 
@@ -88,12 +68,12 @@ function Rules() {
 		<div className="marauder-open-container">
 			<section className="marauder-open-map">
 				<img
-					src={marauderMapGauche}
+					src="/images/marauder-map-gauche.jpg"
 					alt="cote gauche de la carte"
 					className="map-left-half"
 				/>
 				<img
-					src={marauderMapDroite}
+					src="/images/marauder-map-droite.jpg"
 					alt="cote droit de la carte"
 					className="map-right-half"
 				/>
@@ -102,7 +82,7 @@ function Rules() {
 						className={`parchment-container ${validOath ? "magic-glow" : ""}`}
 					>
 						<img
-							src={parcheminVide}
+							src="/images/parchemin-vide.webp"
 							alt="parchemin"
 							className="parchment-image"
 						/>
@@ -125,7 +105,7 @@ function Rules() {
 										onClick={oathValidate}
 									>
 										<img
-											src={validationSerment}
+											src="/images/validation-serment2.png"
 											alt="validation serment"
 											className="validation-image"
 										/>
@@ -141,7 +121,11 @@ function Rules() {
 											onClick={handleShowClue}
 										>
 											{errorOath && (
-												<img src={indice} alt="indice" className="clue-image" />
+												<img
+													src="/images/indice.webp"
+													alt="indice"
+													className="clue-image"
+												/>
 											)}
 										</button>
 										<p className={`error-msg ${showClue ? "visible" : ""}`}>
@@ -153,7 +137,7 @@ function Rules() {
 							{validOath && (
 								<section className="rules-container">
 									<div className="rules-scroll">
-										<p className="magic-text">{displayedText}</p>
+										<p className="magic-text">{fullText}</p>
 									</div>
 									{gameButton && (
 										<button
@@ -162,8 +146,11 @@ function Rules() {
 											onClick={() => navigate("/game")}
 											className="game-button"
 										>
-											<img src={baguettemagique} alt="baguette magique" /> A toi
-											de jouer, sorcier !
+											<img
+												src="/images/baguette-magique.png"
+												alt="baguette magique"
+											/>{" "}
+											A toi de jouer, sorcier !
 										</button>
 									)}
 								</section>

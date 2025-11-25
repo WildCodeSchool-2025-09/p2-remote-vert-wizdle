@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "../styles/clue.css";
 import type { Character } from "../interfaces/interfaces";
+import "../styles/clue.css";
 
 interface ClueProps {
 	attemptCount: number;
@@ -21,9 +21,9 @@ function Clue({ attemptCount, todayCharacter, setUsedClue }: ClueProps) {
 	}
 	return (
 		<>
-			<button type={"button"} onClick={clueClick} className="clue-button">
+			<button type="button" onClick={clueClick} className="clue-button">
 				<img
-					src="./src/assets/images/boule-de-cristal.png"
+					src="/images/boule-de-cristal.png"
 					alt="Boule de cristal"
 					className={isDisabled ? "boule-disabled" : "boule-enabled"}
 				/>

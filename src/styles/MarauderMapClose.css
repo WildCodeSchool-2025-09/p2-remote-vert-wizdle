@@ -20,7 +20,7 @@
 	display: block;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
 	.marauder-map {
 		width: 260px;
 		height: 340px;

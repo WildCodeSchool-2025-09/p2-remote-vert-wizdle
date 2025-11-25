@@ -21,7 +21,7 @@
 .map-left-half,
 .map-right-half {
 	position: absolute;
-	top: 0;
+	top: -.2%;
 	width: 50%;
 	height: 100%;
 }
@@ -75,7 +75,7 @@
 }
 
 .parchment-image {
-	height: 500px; /* même hauteur que les pages */
+	height: 100.8%; /* même hauteur que les pages */
 	width: 100%;
 	object-fit: cover;
 }
@@ -90,7 +90,7 @@
 	display: flex;
 	flex-direction: column; /* textarea AU-DESSUS du bouton */
 	align-items: center;
-	max-height: 80%;
+	max-height: 90%;
 	overflow: visible;
 }
 
@@ -100,64 +100,12 @@
 	padding: 10px;
 	font-size: 1rem;
 	text-align: center;
+	font-family: var(--font-text);
 	border-radius: 6px;
 	border: 3px solid #7a5b2f;
 	background: rgba(255, 255, 255, 0.85);
 	resize: none;
 }
-
-/* MOBILE : on garde la même logique mais plus petit */
-@media screen and (max-width: 600px) {
-	.marauder-open-map {
-		width: 260px;
-		height: 340px;
-		margin-top: 20px;
-	}
-
-	.parchment-container {
-		position: absolute;
-		width: 93%;
-		height: 340px;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		z-index: 3;
-	}
-
-	.parchment-image {
-		width: 100%;
-		height: 100%;
-	}
-
-	.serment-container {
-		width: 95%;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-
-	@keyframes openLeft {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translateX(-120px);
-		}
-	}
-
-	@keyframes openRight {
-		from {
-			transform: translateX(0);
-		}
-		to {
-			transform: translateX(120px);
-		}
-	}
-}
-/* ================================================*/
 
 .parchment-container.magic-glow {
 	animation: glowSpell 1.8s ease-out forwards;
@@ -194,7 +142,6 @@
 
 .rules-scroll {
 	max-height: 65%; /* seulement la zone de texte */
-	overflow-y: auto; /* scroll automatique UNIQUEMENT si dépasse */
 	width: 100%;
 }
 
@@ -226,21 +173,22 @@
 	justify-content: center;
 	align-items: center;
 	gap: 8px;
-	opacity: 0;
-	animation: fadeIn 1.3s forwards ease-out;
-	margin-top: 18px;
-	padding: 10px 18px;
-	font-size: var(--font-size-S);
+	padding: 10px;
+	width: 70%;
+	height: 50px;
+	margin: 0 auto;
 	background: var(--background-button);
-	color: black;
-	border: 2px solid gold;
 	border-radius: 8px;
-	cursor: pointer;
+	border: none;
+	margin-top: 20px;
+	font-size: calc(var(--font-size-L) * 0.8);
 	font-family: var(--font-title);
+	font-weight: 100;
+	cursor: pointer;
 }
 
 .game-button img {
-	width: 15px;
+	width: 30px;
 }
 
 @keyframes fadeIn {
@@ -303,3 +251,67 @@
 .clue-text.visible {
 	opacity: 1;
 }
+
+/* MOBILE : on garde la même logique mais plus petit */
+@media screen and (max-width: 700px) {
+	.marauder-open-map {
+		width: 260px;
+		height: 337px;
+		margin-top: 20px;
+	}
+
+	.parchment-container {
+		position: absolute;
+		width: 93%;
+		height: 340px;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		z-index: 3;
+	}
+
+	.parchment-image {
+		width: 100%;
+		height: 100%;
+	}
+
+	.serment-container {
+		width: 95%;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	@keyframes openLeft {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-120px);
+		}
+	}
+
+	@keyframes openRight {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(120px);
+		}
+	}
+
+	.game-button {
+		height: 30px;
+		margin: 0 auto;
+		margin-top: 10px;
+		font-size: var(--font-size-M);
+	}
+
+	.game-button img {
+		width: 15px;
+	}
+}
+/* ================================================*/
